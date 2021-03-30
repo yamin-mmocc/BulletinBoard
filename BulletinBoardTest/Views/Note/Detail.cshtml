@@ -1,0 +1,30 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Contents Detail - @Model.NoteTitle</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Title : </label>
+                @Model.NoteTitle
+            </div>
+            <div class="panel-heading">
+                <label>Date : </label>
+                @Model.NoteDate.ToString("yyyy-MM-dd")
+            </div>
+            <div class="panel-body">
+                @Html.Raw(@Model.NoteContents)
+            </div>
+            <div class="panel-footer text-right">
+                <a class="btn btn-primary" asp-controller="Note" asp-action="Index">List</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" asp-controller="Home" asp-action="LoginSuccess">Today Note List</a>
+            </div> 
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AddLayout.cshtml";
+}
+@model BulletinBoardTest.Models.Note
+
+    <style>
+        input[name=SelectedDate] + img {
+            position: relative;
+            top: 5px;
+            left: 2px;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <form class="form-horizontal" method="post" asp-controller="Note" asp-action="Add">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" asp-for="NoteTitle" placeholder="Input Title" />
+                    <span class="text-danger" asp-validation-for="NoteTitle"></span>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control editor" rows="20" asp-for="NoteContents" placeholder="Input Contents"></textarea>
+                    <span class="text-danger" asp-validation-for="NoteContents "></span>
+                </div>
+
+                @Html.TextBox("SelectedDate", "", new { @readonly = "readonly" })
+                <script type="text/javascript">
+                    $(function () {
+                        $("#SelectedDate").datepicker({
+                            showOn: 'button',
+                            buttonImageOnly: true,
+                            buttonImage: '/images/calendar.gif'
+                        });
+                    });
+                </script>
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a class="btn btn-default" asp-controller="Note" asp-action="Index">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+

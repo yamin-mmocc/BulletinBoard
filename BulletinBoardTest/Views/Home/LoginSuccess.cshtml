@@ -1,0 +1,34 @@
+﻿
+<h1 style="color:orange;">Welcome MYANMAR OCC ミャンマーOCC </h1>
+<br />
+<br />
+<h1 style="color:blue"> Today Note List</h1>
+
+@if (@ViewBag.curlist.Count > 0)
+{ 
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Writer</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model)
+            {
+                <tr>
+                    <td>@note.NoteNo</td>
+
+                    <td>
+                        <a asp-controller="Note" asp-action="Detail" asp-route-noteNo="@note.NoteNo">@note.NoteTitle</a>
+                    </td>
+
+                    <td>@note.UserName</td>
+                    <td>@note.NoteDate.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
